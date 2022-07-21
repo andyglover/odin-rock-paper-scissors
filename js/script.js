@@ -1,3 +1,6 @@
+let computerScore = 0;
+let playerScore = 0;
+
 function getComputerChoice (){
     let rand3 = Math.floor(Math.random()*3) + 1;
     switch(true){
@@ -69,17 +72,39 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-let computerScore = 0;
-let playerScore = 0;
+
+function logScore(){
+    console.log(`Computer score: ${computerScore}, Player score: ${playerScore}`);
+}
+
+function determineWinner(){
+    if (playerScore > computerScore) {
+        console.log("player win");
+    }
+    
+    if (playerScore < computerScore) {
+        console.log("computer win");
+    }    
+    if (playerScore == computerScore) {
+        console.log("tie");
+    }
+}
 
 function game(){    
     //keep score and report winner or loser
-    for (let i = 0; i <5; i++) {
+    for (let i = 1; i <=5; i++) {
         let playerSelection = "rock";
         let computerSelection = getComputerChoice();
+        console.log("Round " + i);
+        console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
         console.log(playRound(playerSelection, computerSelection));
-        console.log(`Computer score: ${computerScore}, Player score: ${playerScore}`)
+        logScore();
+        console.log("");
     }
+    
+    console.log("Game over! Final score:");
+    logScore();
+    determineWinner();
 }
 
 game();
