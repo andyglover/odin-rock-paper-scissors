@@ -1,7 +1,8 @@
 let computerScore = 0;
 let playerScore = 0;
+let roundCounter = 1;
 
-function getComputerChoice (){
+function getComputerChoice () {
     let rand3 = Math.floor(Math.random()*3) + 1;
     switch(true){
         case (rand3 == 1):
@@ -16,6 +17,10 @@ function getComputerChoice (){
         default:
             return "error";
     }
+}
+
+function getPlayerChoice () {
+    return prompt(`ROUND ${roundCounter}. What's your choice? Type \"rock\" or \"paper\" or \"scissors\"`, "");
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -73,11 +78,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function logScore(){
+function logScore() {
     console.log(`Computer score: ${computerScore}, Player score: ${playerScore}`);
 }
 
-function determineWinner(){
+function determineWinner() {
     if (playerScore > computerScore) {
         console.log("player win");
     }
@@ -90,16 +95,17 @@ function determineWinner(){
     }
 }
 
-function game(){    
+function game() {    
     //keep score and report winner or loser
     for (let i = 1; i <=5; i++) {
-        let playerSelection = "rock";
+        let playerSelection = getPlayerChoice().toLowerCase();
         let computerSelection = getComputerChoice();
         console.log("Round " + i);
         console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
         console.log(playRound(playerSelection, computerSelection));
         logScore();
         console.log("");
+        roundCounter++;
     }
     
     console.log("Game over! Final score:");
@@ -108,5 +114,3 @@ function game(){
 }
 
 game();
-
-//TODO: case insensitivity with .toLowerCase() after adding prompt
