@@ -20,8 +20,9 @@ function getComputerChoice () {
 }
 
 function getPlayerChoice () {
-    return prompt(`ROUND ${roundCounter}. What's your choice? Type \"rock\" or \"paper\" or \"scissors\"`, "");
+    return prompt(`ROUND ${roundCounter} of 5. What's your choice? Type \"rock\" or \"paper\" or \"scissors\"`, "");
 }
+//TODO detect invalid input
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection=="rock") {
