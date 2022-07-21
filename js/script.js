@@ -84,14 +84,14 @@ function logScore() {
 
 function determineWinner() {
     if (playerScore > computerScore) {
-        console.log("player win");
+        console.log("The player wins!");
     }
     
     if (playerScore < computerScore) {
-        console.log("computer win");
+        console.log("The computer wins!");
     }    
     if (playerScore == computerScore) {
-        console.log("tie");
+        console.log("It's a tie!");
     }
 }
 
