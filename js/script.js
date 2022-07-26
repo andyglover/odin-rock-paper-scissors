@@ -1,8 +1,8 @@
 let computerScore = 0;
 let playerScore = 0;
 let roundCounter = 1;
-
-const selectionBtns = document.querySelectorAll('.selectionBtn')
+const selectionBtns = document.querySelectorAll('.selectionBtn');
+const resultsDiv = document.querySelector('#results');
 
 function getComputerChoice () {
     let rand3 = Math.floor(Math.random()*3) + 1;
@@ -114,10 +114,7 @@ function oldgame() {
 selectionBtns.forEach((selectionBtn) => {
     selectionBtn.addEventListener(
         'click', () => {
-            console.log(playRound(selectionBtn.innerText,getComputerChoice()));
+            resultsDiv.textContent = playRound(selectionBtn.innerText,getComputerChoice());
         }
-    )
-}
-);
-
-game();
+    )        
+})
