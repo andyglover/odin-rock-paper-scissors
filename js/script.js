@@ -98,20 +98,23 @@ function determineWinner() {
 
 function game() {    
     //keep score and report winner or loser
-    for (let i = 1; i <=5; i++) {
-        let playerSelection = getPlayerChoice().toLowerCase();
-        let computerSelection = getComputerChoice();
-        console.log("Round " + i);
-        console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
-        console.log(playRound(playerSelection, computerSelection));
-        logScore();
-        console.log("");
-        roundCounter++;
-    }
+
+    //this code plays 5 rounds
+    // for (let i = 1; i <=5; i++) {
+    //     let playerSelection = getPlayerChoice().toLowerCase();
+    //     let computerSelection = getComputerChoice();
+    //     console.log("Round " + i);
+    //     console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
+    //     console.log(playRound(playerSelection, computerSelection));
+    //     logScore();
+    //     console.log("");
+    //     roundCounter++;
+    // }
     
-    console.log("Game over! Final score:");
-    logScore();
-    determineWinner();
+    //this is the game over code after the 5 rounds
+    // console.log("Game over! Final score:");
+    // logScore();
+    // determineWinner();
 }
 
 game();
