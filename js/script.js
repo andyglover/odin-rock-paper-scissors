@@ -2,6 +2,8 @@ let computerScore = 0;
 let playerScore = 0;
 let roundCounter = 1;
 
+const selectionBtns = document.querySelectorAll('.selectionBtn')
+
 function getComputerChoice () {
     let rand3 = Math.floor(Math.random()*3) + 1;
     switch(true){
@@ -116,5 +118,14 @@ function game() {
     // logScore();
     // determineWinner();
 }
+
+selectionBtns.forEach((selectionBtn) => {
+    selectionBtn.addEventListener(
+        'click', () => {
+            console.log("clicked " + selectionBtn.innerText);
+        }
+    )
+}
+);
 
 game();
