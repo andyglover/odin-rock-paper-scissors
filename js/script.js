@@ -75,7 +75,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function logScore() {
-    console.log(`Computer score: ${computerScore}, Player score: ${playerScore}`);
+    return `Computer score: ${computerScore}, Player score: ${playerScore}`;
+
 }
 
 function determineWinner() {
