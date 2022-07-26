@@ -32,46 +32,38 @@ function playRound(playerSelection, computerSelection) {
             playerScore++;
             computerScore++;
             return "Both players chose Rock! It's a tie!";
-            
         }
         else if (computerSelection=="paper") {
             computerScore++;
             return "You lose! Paper beats Rock!";
-            
         }
         else if (computerSelection=="scissors") {
             playerScore++;
             return "You win! Rock beats Scissors!";
-            
         }
     }
     else if (playerSelection=="paper") {
         if (computerSelection=="rock") {
             playerScore++;
             return "You win! Paper beats Rock!";
-            
         }
         else if (computerSelection=="paper") {
             computerScore++;
             return "Both players chose Paper! It's a tie!";
-            
         }
         else if (computerSelection=="scissors") {
             computerScore++;
             return "You lose! Scissors beats Paper!";
-            
         }
     }
     else if (playerSelection=="scissors") {
         if (computerSelection=="rock") {
             computerScore++;
             return "You lose! Rock beats Scissors!";
-            
         }
         else if (computerSelection=="paper") {
             playerScore++;
             return "You win! Scissors beats Paper!";
-            
         }
         else if (computerSelection=="scissors") {
             computerScore++;
@@ -98,21 +90,21 @@ function determineWinner() {
     }
 }
 
-function game() {    
-    //keep score and report winner or loser
+function game(){
+    let playerSelection = getPlayerChoice().toLowerCase();
+    let computerSelection = getComputerChoice();
+    console.log("Round " + i);
+    console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
+    console.log(playRound(playerSelection, computerSelection));
+    logScore();
+    console.log("");
+    roundCounter++;
+}
 
+function oldgame() {
     //this code plays 5 rounds
     // for (let i = 1; i <=5; i++) {
-    //     let playerSelection = getPlayerChoice().toLowerCase();
-    //     let computerSelection = getComputerChoice();
-    //     console.log("Round " + i);
-    //     console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
-    //     console.log(playRound(playerSelection, computerSelection));
-    //     logScore();
-    //     console.log("");
-    //     roundCounter++;
     // }
-    
     //this is the game over code after the 5 rounds
     // console.log("Game over! Final score:");
     // logScore();
@@ -122,7 +114,7 @@ function game() {
 selectionBtns.forEach((selectionBtn) => {
     selectionBtn.addEventListener(
         'click', () => {
-            console.log("clicked " + selectionBtn.innerText);
+            console.log(playRound(selectionBtn.innerText,getComputerChoice()));
         }
     )
 }
