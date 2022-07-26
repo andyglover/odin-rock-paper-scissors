@@ -3,6 +3,7 @@ let playerScore = 0;
 let roundCounter = 1;
 const selectionBtns = document.querySelectorAll('.selectionBtn');
 const resultsDiv = document.querySelector('#results');
+const scoreDiv = document.querySelector('#score');
 
 function getComputerChoice () {
     let rand3 = Math.floor(Math.random()*3) + 1;
@@ -115,6 +116,7 @@ selectionBtns.forEach((selectionBtn) => {
     selectionBtn.addEventListener(
         'click', () => {
             resultsDiv.textContent = playRound(selectionBtn.innerText,getComputerChoice());
+            scoreDiv.textContent = logScore();
         }
     )        
 })
