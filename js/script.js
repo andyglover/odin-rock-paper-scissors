@@ -5,6 +5,7 @@ const selectionBtns = document.querySelectorAll('.selectionBtn');
 const resultsDiv = document.querySelector('#roundResults');
 const scoreDiv = document.querySelector('#score');
 const gameOverDiv = document.querySelector('#gameOver');
+const newGameButton = document.querySelector('#newGameButton');
 
 function getComputerChoice () {
     let rand3 = Math.floor(Math.random()*3) + 1;
@@ -117,6 +118,18 @@ function disableSelectionBtns(){
     selectionBtns.forEach((selectionBtn) => {selectionBtn.setAttribute("disabled", "true");})
 }
 
+function hideNewGameButton(){
+    newGameButton.style.display = "none";
+    
+}
+function showNewGameButton(){
+    newGameButton.style.display = "block";
+}
+
+//TODO
+//when the game is over, show the new game button
+//when you click the new game button, hide the new game button, reset the game, enable the other buttons
+
 selectionBtns.forEach((selectionBtn) => {
     selectionBtn.addEventListener(
         'click', () => {
@@ -129,4 +142,6 @@ selectionBtns.forEach((selectionBtn) => {
         }
     )        
 })
+
+
 
