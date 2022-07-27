@@ -113,6 +113,10 @@ function oldgame() {
     // determineWinner();
 }
 
+function disableSelectionBtns(){
+    selectionBtns.forEach((selectionBtn) => {selectionBtn.setAttribute("disabled", "true");})
+}
+
 selectionBtns.forEach((selectionBtn) => {
     selectionBtn.addEventListener(
         'click', () => {
@@ -120,7 +124,9 @@ selectionBtns.forEach((selectionBtn) => {
             scoreDiv.textContent = logScore();
             if (playerScore == 5 || computerScore == 5){
                 gameOverDiv.textContent = determineWinner();
+                disableSelectionBtns();
             }
         }
     )        
 })
+
