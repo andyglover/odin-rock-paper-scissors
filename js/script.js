@@ -2,8 +2,9 @@ let computerScore = 0;
 let playerScore = 0;
 let roundCounter = 1;
 const selectionBtns = document.querySelectorAll('.selectionBtn');
-const resultsDiv = document.querySelector('#results');
+const resultsDiv = document.querySelector('#roundResults');
 const scoreDiv = document.querySelector('#score');
+const gameOverDiv = document.querySelector('#gameOver');
 
 function getComputerChoice () {
     let rand3 = Math.floor(Math.random()*3) + 1;
@@ -76,19 +77,18 @@ function playRound(playerSelection, computerSelection) {
 
 function logScore() {
     return `Computer score: ${computerScore}, Player score: ${playerScore}`;
-
 }
 
 function determineWinner() {
     if (playerScore > computerScore) {
-        console.log("The player wins!");
+        return "The player wins!";
     }
     
     if (playerScore < computerScore) {
-        console.log("The computer wins!");
+        return "The computer wins!";
     }    
     if (playerScore == computerScore) {
-        console.log("It's a tie!");
+        return "It's a tie!";
     }
 }
 
@@ -118,6 +118,9 @@ selectionBtns.forEach((selectionBtn) => {
         'click', () => {
             resultsDiv.textContent = playRound(selectionBtn.innerText,getComputerChoice());
             scoreDiv.textContent = logScore();
+            if (playerScore == 5 || computerScore == 5){
+                gameOverDiv.textContent = determineWinner();
+            }
         }
     )        
 })
