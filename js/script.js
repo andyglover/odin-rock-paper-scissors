@@ -34,77 +34,88 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection=="rock") {
             playerScore++;
             computerScore++;
-            return "Both players chose Rock! It's a tie!";
+            return "Both players chose Rock! This round is a tie!";
         }
         else if (computerSelection=="paper") {
             computerScore++;
-            return "You lose! Paper beats Rock!";
+            return "You lose this round! Paper beats Rock!";
         }
         else if (computerSelection=="scissors") {
             playerScore++;
-            return "You win! Rock beats Scissors!";
+            return "You win this round! Rock beats Scissors!";
         }
     }
     else if (playerSelection=="paper") {
         if (computerSelection=="rock") {
             playerScore++;
-            return "You win! Paper beats Rock!";
+            return "You win this round! Paper beats Rock!";
         }
         else if (computerSelection=="paper") {
             computerScore++;
-            return "Both players chose Paper! It's a tie!";
+            return "Both players chose Paper! This round is a tie!";
         }
         else if (computerSelection=="scissors") {
             computerScore++;
-            return "You lose! Scissors beats Paper!";
+            return "You lose this round! Scissors beats Paper!";
         }
     }
     else if (playerSelection=="scissors") {
         if (computerSelection=="rock") {
             computerScore++;
-            return "You lose! Rock beats Scissors!";
+            return "You lose this round! Rock beats Scissors!";
         }
         else if (computerSelection=="paper") {
             playerScore++;
-            return "You win! Scissors beats Paper!";
+            return "You win this round! Scissors beats Paper!";
         }
         else if (computerSelection=="scissors") {
             computerScore++;
             playerScore++;
-            return "Both players chose Scissors! It's a tie!";
+            return "Both players chose Scissors! This round is a tie!";
         }
     }
 }
 
-function logScore() {
+function getScore() {
     return `Computer score: ${computerScore}, Player score: ${playerScore}`;
+}
+function postScore() {
+    scoreDiv.textContent = getScore();
+}
+function unpostScore() {
+    scoreDiv.textContent = "";
+}
+function unpostResults() {
+    resultsDiv.textContent = "";
+}
+function unpostWinner() {
+    gameOverDiv.textContent = "";
 }
 
 function determineWinner() {
     if (playerScore > computerScore) {
-        return "The player wins!";
+        return "The player is the winner!";
     }
-    
     if (playerScore < computerScore) {
-        return "The computer wins!";
+        return "The computer is the winner!";
     }    
     if (playerScore == computerScore) {
         return "It's a tie!";
     }
 }
 
-function game(){
-    let playerSelection = getPlayerChoice().toLowerCase();
-    let computerSelection = getComputerChoice();
-    console.log("Round " + i);
-    console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
-    console.log(playRound(playerSelection, computerSelection));
-    logScore();
-    console.log("");
-    roundCounter++;
-}
+// function oldround(){
+//     let playerSelection = getPlayerChoice().toLowerCase();
+//     let computerSelection = getComputerChoice();
+//     console.log("Round " + i);
+//     console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
+//     console.log(playRound(playerSelection, computerSelection));
+//     logScore();
+//     console.log("");
+//     roundCounter++;
+// }
 
-function oldgame() {
+// function oldgameloop() {
     //this code plays 5 rounds
     // for (let i = 1; i <=5; i++) {
     // }
@@ -112,36 +123,49 @@ function oldgame() {
     // console.log("Game over! Final score:");
     // logScore();
     // determineWinner();
-}
+// }
 
 function disableSelectionBtns(){
     selectionBtns.forEach((selectionBtn) => {selectionBtn.setAttribute("disabled", "true");})
 }
-
+function enableSelectionBtns(){
+    selectionBtns.forEach((selectionBtn) => {selectionBtn.removeAttribute("disabled");})
+}
 function hideNewGameButton(){
-    newGameButton.style.display = "none";
-    
+    newGameButton.style.display = "none";    
 }
 function showNewGameButton(){
-    newGameButton.style.display = "block";
+    newGameButton.style.display = "inline-block";
 }
 
-//TODO
-//when the game is over, show the new game button
-//when you click the new game button, hide the new game button, reset the game, enable the other buttons
+function newGame(){
+    hideNewGameButton();
+    enableSelectionBtns();
+    resetScores();
+    unpostScore();
+    unpostResults();
+    unpostWinner();
+}
+function resetScores(){
+    computerScore = 0;
+    playerScore = 0;
+}
+
+newGameButton.addEventListener('click',()=>{
+    newGame();
+})
 
 selectionBtns.forEach((selectionBtn) => {
     selectionBtn.addEventListener(
         'click', () => {
             resultsDiv.textContent = playRound(selectionBtn.innerText,getComputerChoice());
-            scoreDiv.textContent = logScore();
+            postScore();
             if (playerScore == 5 || computerScore == 5){
-                gameOverDiv.textContent = determineWinner();
+                gameOverDiv.textContent = "Game over! " + determineWinner();
                 disableSelectionBtns();
+                showNewGameButton();
             }
         }
     )        
 })
-
-
 
