@@ -1,6 +1,5 @@
 let computerScore = 0;
 let playerScore = 0;
-let roundCounter = 1;
 const selectionBtns = document.querySelectorAll('.selectionBtn');
 const resultsDiv = document.querySelector('#roundResults');
 const scoreDiv = document.querySelector('#score');
@@ -23,11 +22,6 @@ function getComputerChoice () {
             return "error";
     }
 }
-
-function getPlayerChoice () {
-    return prompt(`ROUND ${roundCounter} of 5. What's your choice? Type \"rock\" or \"paper\" or \"scissors\"`, "");
-}
-//TODO detect invalid input
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection=="rock") {
@@ -103,27 +97,6 @@ function determineWinner() {
         return "It's a tie!";
     }
 }
-
-// function oldround(){
-//     let playerSelection = getPlayerChoice().toLowerCase();
-//     let computerSelection = getComputerChoice();
-//     console.log("Round " + i);
-//     console.log(`The player chose ${playerSelection}, and the computer chose ${computerSelection}!`)
-//     console.log(playRound(playerSelection, computerSelection));
-//     logScore();
-//     console.log("");
-//     roundCounter++;
-// }
-
-// function oldgameloop() {
-    //this code plays 5 rounds
-    // for (let i = 1; i <=5; i++) {
-    // }
-    //this is the game over code after the 5 rounds
-    // console.log("Game over! Final score:");
-    // logScore();
-    // determineWinner();
-// }
 
 function disableSelectionBtns(){
     selectionBtns.forEach((selectionBtn) => {selectionBtn.setAttribute("disabled", "true");})
