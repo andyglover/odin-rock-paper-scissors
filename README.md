@@ -22,12 +22,12 @@ Aside from the logic of the game itself, it was fun to learn how to manipulate t
 ## Examples:
 Here's a few more repositories of mine you might like to check out:
 
-**ANDYGLOVER.DEV:** https://github.com/andyglover/andyglover.dev
+**Admin Dashboard:** https://github.com/andyglover/odin-project-admin-dashboard
 
 **Calculator:** https://github.com/andyglover/odin-calculator
 
 **GIF Thingy:** https://github.com/andyglover/gif-thingy
 
-**Admin Dashboard:** https://github.com/andyglover/odin-project-admin-dashboard
+**Library:** https://github.com/andyglover/odin-project-library
 
-**ANDYGLOVER.IO:** https://github.com/andyglover/andyglover.github.io
+**Tic-Tac-Toe:** https://github.com/andyglover/odin-project-tictactoe
